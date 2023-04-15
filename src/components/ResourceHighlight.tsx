@@ -1,4 +1,6 @@
-export default function ResourceHighlight() {
+import { FC } from 'react'
+
+const ResourceHighlight: FC = () => {
   return (
     <section className="hero ">
       <div className="hero-body">
@@ -37,3 +39,5 @@ export default function ResourceHighlight() {
     </section>
   )
 }
+
+export default ResourceHighlight

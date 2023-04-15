@@ -1,4 +1,6 @@
-export default function Navbar() {
+import { FC } from 'react'
+
+const Navbar: FC = () => {
   return (
     <nav className="navbar">
       <div className="container">
@@ -37,3 +39,5 @@ export default function Navbar() {
     </nav>
   )
 }
+
+export default Navbar

@@ -1,4 +1,6 @@
-export default function Footer() {
+import { FC } from 'react'
+
+const Footer: FC = () => {
   return (
     <footer className="footer">
       <div className="content has-text-centered">
@@ -11,3 +13,5 @@ export default function Footer() {
     </footer>
   )
 }
+
+export default Footer

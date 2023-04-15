@@ -1,4 +1,6 @@
-export default function Newsletter() {
+import { FC } from 'react'
+
+const Newsletter: FC = () => {
   return (
     <section className="section">
       <div className="columns">
@@ -27,3 +29,5 @@ export default function Newsletter() {
     </section>
   )
 }
+
+export default Newsletter

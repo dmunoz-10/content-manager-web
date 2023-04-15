@@ -1,4 +1,6 @@
-export default function ResourceList() {
+import { FC } from 'react'
+
+const ResourceList: FC = () => {
   return (
     <section className="hero ">
       <div className="hero-body">
@@ -57,3 +59,5 @@ export default function ResourceList() {
     </section>
   )
 }
+
+export default ResourceList
