@@ -1,39 +1,24 @@
-import { FC } from 'react'
+import { FC } from "react"
+import { resourcesType } from "@/pages/api/data"
 
-const ResourceHighlight: FC = () => {
+const ResourceHighlight: FC<{ resources: resourcesType[] }> = ({ resources }) => {
   return (
     <section className="hero ">
       <div className="hero-body">
         <div className="container">
-          <section className="section">
-            <div className="columns">
-              <div className="column is-8 is-offset-2">
-                <div className="content is-medium">
-                  <h2 className="subtitle is-4">December 25, 2022</h2>
-                  <h1 className="title">Getting Started</h1>
-                  <p>This is a starter template for creating a beautiful, customizable blog with minimal
-                    effort. You&apos;ll only have to change a few settings and you&apos;re ready to go. As with all Jigsaw sites,
-                    configuration settings can be found in config</p>
+          {resources.map(({ id, title, description, createdAt }) => (
+            <section className="section" key={id}>
+              <div className="columns">
+                <div className="column is-8 is-offset-2">
+                  <div className="content is-medium">
+                    <h2 className="subtitle is-4">{createdAt}</h2>
+                    <h1 className="title">{title}</h1>
+                    <p>{description}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-          </section>
-
-          <div className="is-divider"></div>
-
-          <section className="section">
-            <div className="columns">
-              <div className="column is-8 is-offset-2">
-                <div className="content is-medium">
-                  <h2 className="subtitle is-4">December 25, 2022</h2>
-                  <h1 className="title">Getting Started</h1>
-                  <p>This is a starter template for creating a beautiful, customizable blog with minimal
-                    effort. You&apos;ll only have to change a few settings and you&apos;re ready to go. As with all Jigsaw sites,
-                    configuration settings can be found in config</p>
-                </div>
-              </div>
-            </div>
-          </section>
+            </section>
+          ))}
         </div>
       </div>
     </section>
