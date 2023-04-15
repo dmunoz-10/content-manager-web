@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { resourcesType } from "@/pages/api/data"
+import { resourcesType } from "@/api/data"
 
 const ResourceList: FC<{ resources: resourcesType[] }> = ({ resources }) => {
   return (
