@@ -1,13 +1,13 @@
+import { FC } from "react"
+import { GetStaticProps, InferGetServerSidePropsType } from "next"
 import Layout from "@/components/Layout"
 import ResourceHighlight from "@/components/ResourceHighlight"
 import Newsletter from "@/components/Newsletter"
 import ResourceList from "@/components/ResourceList"
 import Footer from "@/components/Footer"
-import { GetStaticProps, InferGetStaticPropsType } from "next"
-import { FC } from "react"
 import { ResourceData } from "@/types"
 
-const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ resources }) => {
+const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ resources }) => {
   return (
     <Layout>
       <ResourceHighlight resources={resources.slice(0, 2)} />
@@ -18,8 +18,8 @@ const Home: FC<InferGetStaticPropsType<typeof getStaticProps>> = ({ resources })
   )
 }
 
-export const getStaticProps: GetStaticProps<{ resources: ResourceData[] }> = async () => {
-  const res = await fetch("http://localhost:3000/api/resources")
+export const getServerSideProps: GetStaticProps<{ resources: ResourceData[] }> = async () => {
+  const res = await fetch("http://localhost:3001/api/resources")
   const data: ResourceData[] = await res.json()
 
   return {
