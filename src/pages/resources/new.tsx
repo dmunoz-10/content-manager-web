@@ -1,7 +1,25 @@
-import { FC } from "react"
+import { FC, useState, ChangeEvent } from "react"
 import Layout from "@/components/Layout"
 
+const DEFAULT_DATA = {
+  title: "",
+  description: "",
+  link: "",
+  priority: "2",
+  timeToFinish: "60",
+}
+
 const ResourceCreate: FC = () => {
+  const [form, setForm] = useState(DEFAULT_DATA)
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  const resetForm = () => setForm(DEFAULT_DATA)
+
+  const submitForm = () => alert(JSON.stringify(form))
+
   return (
     <Layout>
       <div className="container">
@@ -14,7 +32,14 @@ const ResourceCreate: FC = () => {
                 <div className="field">
                   <label className="label">Title</label>
                   <div className="control">
-                    <input className="input" type="text" placeholder="Learn Next JS and Sanity IO" />
+                    <input
+                      className="input"
+                      type="text"
+                      name="title"
+                      value={form.title}
+                      onChange={handleChange}
+                      placeholder="Learn Next JS and Sanity IO"
+                    />
                   </div>
                 </div>
 
@@ -23,6 +48,9 @@ const ResourceCreate: FC = () => {
                   <div className="control">
                     <textarea
                       className="textarea"
+                      name="description"
+                      value={form.description}
+                      onChange={handleChange}
                       placeholder="Learn these technologies because they are very popular and enable better SEO"
                     >
                     </textarea>
@@ -32,7 +60,14 @@ const ResourceCreate: FC = () => {
                 <div className="field">
                   <label className="label">Link</label>
                   <div className="control">
-                    <input className="input" type="text" placeholder="https://academy.eincode.com" />
+                    <input
+                      className="input"
+                      type="text"
+                      name="link"
+                      value={form.link}
+                      onChange={handleChange}
+                      placeholder="https://academy.eincode.com"
+                    />
                   </div>
                 </div>
 
@@ -40,7 +75,11 @@ const ResourceCreate: FC = () => {
                   <label className="label">Priority</label>
                   <div className="control">
                     <div className="select">
-                      <select>
+                      <select
+                        name="priority"
+                        value={form.priority}
+                        onChange={handleChange}
+                      >
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -52,16 +91,25 @@ const ResourceCreate: FC = () => {
                 <div className="field">
                   <label className="label">Time to finish</label>
                   <div className="control">
-                    <input className="input" type="number" placeholder="60 (time in minutes)" />
+                    <input
+                      className="input"
+                      type="number"
+                      name="timeToFinish"
+                      value={form.timeToFinish}
+                      onChange={handleChange}
+                      placeholder="60"
+                    />
+                    <p className="help">Time in minutes</p>
                   </div>
                 </div>
 
                 <div className="field is-grouped">
                   <div className="control">
-                    <button className="button is-link">Submit</button>
+                    <button className="button is-link" type="button" onClick={submitForm}>Submit</button>
                   </div>
+
                   <div className="control">
-                    <button className="button is-link is-light">Cancel</button>
+                    <button className="button is-link is-light" onClick={resetForm}>Reset Form</button>
                   </div>
                 </div>
               </form>
