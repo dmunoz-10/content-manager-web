@@ -1,5 +1,7 @@
 import { FC, useState, ChangeEvent } from "react"
+import axios, { AxiosError } from "axios"
 import Layout from "@/components/Layout"
+import { useRouter } from "next/router"
 
 const DEFAULT_DATA = {
   title: "",
@@ -11,6 +13,7 @@ const DEFAULT_DATA = {
 
 const ResourceCreate: FC = () => {
   const [form, setForm] = useState(DEFAULT_DATA)
+  const router = useRouter()
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value })
@@ -18,7 +21,11 @@ const ResourceCreate: FC = () => {
 
   const resetForm = () => setForm(DEFAULT_DATA)
 
-  const submitForm = () => alert(JSON.stringify(form))
+  const submitForm = () => {
+    axios.post("/api/resources", form)
+      .then(() => router.push("/"))
+      .catch((error: AxiosError<{ error: string }>) => alert(error.response?.data.error))
+  }
 
   return (
     <Layout>
