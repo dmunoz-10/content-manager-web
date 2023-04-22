@@ -1,5 +1,6 @@
 import { FC } from "react"
 import { ResourceData } from "@/types"
+import Link from "next/link"
 
 const ResourceList: FC<{ resources: ResourceData[] }> = ({ resources }) => {
   return (
@@ -14,6 +15,11 @@ const ResourceList: FC<{ resources: ResourceData[] }> = ({ resources }) => {
                     <h2 className="subtitle is-5 has-text-grey">{createdAt}</h2>
                     <h1 className="title has-text-black is-3">{title}</h1>
                     <p className="has-text-dark">{description}</p>
+                    <Link legacyBehavior href={`/resources/${id}`}>
+                      <a className="button is-link">
+                        Details
+                      </a>
+                    </Link>
                   </div>
                 </div>
               ))}
