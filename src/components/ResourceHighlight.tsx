@@ -1,9 +1,9 @@
 import { FC } from "react"
-import { resourcesType } from "@/api/data"
+import { ResourceData } from "@/types"
 
-const ResourceHighlight: FC<{ resources: resourcesType[] }> = ({ resources }) => {
+const ResourceHighlight: FC<{ resources: ResourceData[] }> = ({ resources }) => {
   return (
-    <section className="hero ">
+    <section className="hero">
       <div className="hero-body">
         <div className="container">
           {resources.map(({ id, title, description, createdAt }) => (

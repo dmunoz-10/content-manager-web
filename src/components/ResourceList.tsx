@@ -1,7 +1,7 @@
 import { FC } from "react"
-import { resourcesType } from "@/api/data"
+import { ResourceData } from "@/types"
 
-const ResourceList: FC<{ resources: resourcesType[] }> = ({ resources }) => {
+const ResourceList: FC<{ resources: ResourceData[] }> = ({ resources }) => {
   return (
     <section className="hero ">
       <div className="hero-body">

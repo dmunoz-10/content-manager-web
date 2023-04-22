@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { GetStaticProps, InferGetServerSidePropsType } from "next"
+import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 import Layout from "@/components/Layout"
 import ResourceHighlight from "@/components/ResourceHighlight"
 import Newsletter from "@/components/Newsletter"
@@ -18,7 +18,7 @@ const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ reso
   )
 }
 
-export const getServerSideProps: GetStaticProps<{ resources: ResourceData[] }> = async () => {
+export const getServerSideProps: GetServerSideProps<{ resources: ResourceData[] }> = async () => {
   const res = await fetch("http://localhost:3001/api/resources")
   const data: ResourceData[] = await res.json()
 
