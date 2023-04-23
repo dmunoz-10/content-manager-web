@@ -3,8 +3,8 @@ export type ResourceData = {
   title: string
   description: string
   link: string
-  priority: number
-  timeToFinish: number
+  priority: string
+  timeToFinish: string
   status: string
   createdAt: string
 }
@@ -13,6 +13,6 @@ export type ResourceDataForm = {
   title: string
   description: string
   link: string
-  priority: number
-  timeToFinish: number
+  priority: string
+  timeToFinish: string
 }
