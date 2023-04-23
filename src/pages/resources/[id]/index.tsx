@@ -2,6 +2,7 @@ import { FC } from "react"
 import { GetStaticProps, GetStaticPropsContext, InferGetServerSidePropsType } from "next"
 import Layout from "@/components/Layout"
 import { ResourceData } from "@/types"
+import Link from "next/link"
 
 const Show: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ resource, error }) => {
   return (
@@ -20,6 +21,9 @@ const Show: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ reso
                         <h2 className="subtitle is-4">{resource?.createdAt}</h2>
                         <h1 className="title">{resource?.title}</h1>
                         <p>{resource?.description}</p>
+                        <Link legacyBehavior href={`/resources/${resource?.id}/edit`}>
+                          <a className="button is-warning">Update</a>
+                        </Link>
                       </>
                     )}
                   </div>
