@@ -1,13 +1,20 @@
 import { FC, useMemo } from "react"
+import axios, { AxiosError } from "axios"
 import Layout from "@/components/Layout"
 import Form from "@/components/resources/form"
 import { GetStaticProps, GetStaticPropsContext, InferGetServerSidePropsType } from "next"
+import { useRouter } from "next/router"
 import { ResourceData, ResourceDataForm } from "@/types"
 
 const Edit: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ resource, error }) => {
+  const router = useRouter()
+
   const initialData = useMemo(() => resource as ResourceData, [resource])
+
   const submitForm = (form: ResourceDataForm | ResourceData) => {
-    alert(form)
+    axios.put(`/api/resources/${resource?.id}`, form)
+      .then(() => router.push(`/resources/${resource?.id}`))
+      .catch((err: AxiosError<{ error: string }>) => alert(err.response?.data.error))
   }
 
   return (
