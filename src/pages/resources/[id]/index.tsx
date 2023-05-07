@@ -1,5 +1,5 @@
 import { FC } from "react"
-import { GetStaticProps, GetStaticPropsContext, InferGetServerSidePropsType } from "next"
+import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from "next"
 import Layout from "@/components/Layout"
 import { ResourceData } from "@/types"
 import Link from "next/link"
@@ -37,10 +37,10 @@ const Show: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ reso
   )
 }
 
-export const getServerSideProps: GetStaticProps<{
+export const getServerSideProps: GetServerSideProps<{
   resource: ResourceData | null
   error: string | null
-}> = async ({ params }: GetStaticPropsContext) => {
+}> = async ({ params }: GetServerSidePropsContext) => {
   const resourceId = params?.id as string
   const res = await fetch(`http://localhost:3001/api/resources/${resourceId}`)
   const { resource, error }: { resource?: ResourceData, error?: string } = await res.json()

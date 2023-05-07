@@ -2,7 +2,7 @@ import { FC, useMemo } from "react"
 import axios, { AxiosError } from "axios"
 import Layout from "@/components/Layout"
 import Form from "@/components/resources/form"
-import { GetStaticProps, GetStaticPropsContext, InferGetServerSidePropsType } from "next"
+import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from "next"
 import { useRouter } from "next/router"
 import { ResourceData, ResourceDataForm } from "@/types"
 
@@ -34,10 +34,10 @@ const Edit: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ reso
   )
 }
 
-export const getServerSideProps: GetStaticProps<{
+export const getServerSideProps: GetServerSideProps<{
   resource: ResourceData | null
   error: string | null
-}> = async ({ params }: GetStaticPropsContext) => {
+}> = async ({ params }: GetServerSidePropsContext) => {
   const resourceId = params?.id as string
   const res = await fetch(`http://localhost:3001/api/resources/${resourceId}`)
   const { resource, error }: { resource?: ResourceData, error?: string } = await res.json()
