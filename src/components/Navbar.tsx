@@ -17,6 +17,7 @@ const Navbar: FC = () => {
             <span></span>
           </span>
         </div>
+
         <div id="navbarMenu" className="navbar-menu">
           <div className="navbar-end">
             <div className=" navbar-item">
