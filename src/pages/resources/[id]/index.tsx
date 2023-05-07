@@ -3,8 +3,17 @@ import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsT
 import Layout from "@/components/Layout"
 import { ResourceData } from "@/types"
 import Link from "next/link"
+import axios, { AxiosError } from "axios"
 
 const Show: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ resource, error }) => {
+  const activateResource = () => {
+    axios.put(`/api/resources/${resource?.id}`, { ...resource, status: "active" })
+      .then(() => alert("Resource has been activated!"))
+      .catch((err: AxiosError<{ error: string }>) => {
+        alert(`Couldn't activate the resource!\n${err.response?.data.error}`)
+      })
+  }
+
   return (
     <Layout>
       <section className="hero">
@@ -21,9 +30,16 @@ const Show: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ reso
                         <h2 className="subtitle is-4">{resource?.createdAt}</h2>
                         <h1 className="title">{resource?.title}</h1>
                         <p>{resource?.description}</p>
+                        <p>Time to finish: {resource?.timeToFinish} min</p>
                         <Link legacyBehavior href={`/resources/${resource?.id}/edit`}>
                           <a className="button is-warning">Update</a>
                         </Link>
+                        <button
+                          className="button is-success ml-2"
+                          onClick={activateResource}
+                        >
+                          Activate
+                        </button>
                       </>
                     )}
                   </div>
