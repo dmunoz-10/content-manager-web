@@ -2,7 +2,7 @@ import { FC } from "react"
 import { ResourceData } from "@/types"
 import Link from "next/link"
 
-const ResourceList: FC<{ resources: ResourceData[] }> = ({ resources }) => {
+const ResourcesList: FC<{ resources: ResourceData[] }> = ({ resources }) => {
   return (
     <section className="hero ">
       <div className="hero-body">
@@ -31,4 +31,4 @@ const ResourceList: FC<{ resources: ResourceData[] }> = ({ resources }) => {
   )
 }
 
-export default ResourceList
+export default ResourcesList

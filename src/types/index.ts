@@ -7,6 +7,7 @@ export type ResourceData = {
   timeToFinish: string
   status: string
   createdAt: string
+  activatedAt: string;
 }
 
 export type ResourceDataForm = {

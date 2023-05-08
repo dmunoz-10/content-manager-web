@@ -1,7 +1,7 @@
 import { FC, useMemo } from "react"
 import axios, { AxiosError } from "axios"
 import Layout from "@/components/Layout"
-import Form from "@/components/resources/form"
+import Form from "@/components/resources/Form"
 import { GetServerSideProps, GetServerSidePropsContext, InferGetServerSidePropsType } from "next"
 import { useRouter } from "next/router"
 import { ResourceData, ResourceDataForm } from "@/types"

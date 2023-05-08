@@ -1,5 +1,11 @@
 import { FC, useState, ChangeEvent } from "react"
-import { FormProps } from './types'
+import { ResourceDataForm, ResourceData } from "@/types"
+
+type FormProps = {
+  type: 'new' | 'edit'
+  initalData?: ResourceDataForm | ResourceData
+  onSubmit: (form: ResourceDataForm | ResourceData) => void
+}
 
 const DEFAULT_DATA = {
   title: "",
@@ -9,7 +15,7 @@ const DEFAULT_DATA = {
   timeToFinish: "60",
 }
 
-const Form: FC<FormProps> = ({ type, initalData = DEFAULT_DATA, onSubmit }) => {
+const ResourcesForm: FC<FormProps> = ({ type, initalData = DEFAULT_DATA, onSubmit }) => {
   const [form, setForm] = useState(initalData)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -111,4 +117,4 @@ const Form: FC<FormProps> = ({ type, initalData = DEFAULT_DATA, onSubmit }) => {
   )
 }
 
-export default Form
+export default ResourcesForm

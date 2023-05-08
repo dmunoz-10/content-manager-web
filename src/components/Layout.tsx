@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react"
 import Navbar from "./Navbar"
-import ActiveResource from "./ActiveResource"
+import ActiveResource from "./resources/Active"
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (

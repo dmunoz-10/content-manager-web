@@ -1,18 +1,18 @@
 import { FC } from "react"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 import Layout from "@/components/Layout"
-import ResourceHighlight from "@/components/ResourceHighlight"
+import ResourcesHighlight from "@/components/resources/Highlight"
 import Newsletter from "@/components/Newsletter"
-import ResourceList from "@/components/ResourceList"
+import ResourcesList from "@/components/resources/List"
 import Footer from "@/components/Footer"
 import { ResourceData } from "@/types"
 
 const Home: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ resources }) => {
   return (
     <Layout>
-      <ResourceHighlight resources={resources.slice(0, 2)} />
+      <ResourcesHighlight resources={resources.slice(0, 2)} />
       <Newsletter />
-      <ResourceList resources={resources.slice(2)} />
+      <ResourcesList resources={resources.slice(2)} />
       <Footer />
     </Layout>
   )

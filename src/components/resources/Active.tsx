@@ -1,7 +1,7 @@
 import { FC } from "react"
 import Link from "next/link"
 
-const ActiveResource: FC = () => {
+const ResourcesActive: FC = () => {
   return (
     <div className="active-resource">
       <h1 className="resource-name">My Active Resource</h1>
@@ -16,4 +16,4 @@ const ActiveResource: FC = () => {
   )
 }
 
-export default ActiveResource
+export default ResourcesActive

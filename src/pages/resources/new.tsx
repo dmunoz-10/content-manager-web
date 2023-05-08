@@ -1,7 +1,7 @@
 import { FC } from "react"
 import axios, { AxiosError } from "axios"
 import Layout from "@/components/Layout"
-import Form from "@/components/resources/form"
+import Form from "@/components/resources/Form"
 import { useRouter } from "next/router"
 import { ResourceDataForm } from "@/types"
 
