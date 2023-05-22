@@ -8,7 +8,7 @@ import axios, { AxiosError } from "axios"
 const Show: FC<InferGetServerSidePropsType<typeof getServerSideProps>> = ({ resource, error }) => {
   const activateResource = () => {
     axios.put(`/api/resources/${resource?.id}`, { ...resource, status: "active" })
-      .then(() => alert("Resource has been activated!"))
+      .then(() => location.reload())
       .catch((err: AxiosError<{ error: string }>) => {
         alert(`Couldn't activate the resource!\n${err.response?.data.error}`)
       })

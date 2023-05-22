@@ -5,12 +5,14 @@ import { ResourceData } from "@/types"
 import { differenceInSeconds } from "date-fns"
 
 const ResourcesActive: FC = () => {
+  const [resource, setResource] = useState<ResourceData>()
   const [timeToFinish, setTimeToFinish] = useState(0)
 
   useEffect(() => {
     async function fetchResource() {
       const res = await axios.get("/api/resources/active")
       const activeResource = res.data as ResourceData
+      setResource(activeResource)
 
       const elapsedTime = differenceInSeconds(new Date(), new Date(activeResource.activatedAt))
       const timeToFinish = Number(activeResource.timeToFinish)
@@ -35,6 +37,8 @@ const ResourcesActive: FC = () => {
     return () => clearTimeout(timer)
   }, [timeToFinish])
 
+  if (!resource) return <></>
+
   return (
     <div className="active-resource">
       <h1 className="resource-name">My Active Resource</h1>
@@ -42,7 +46,7 @@ const ResourcesActive: FC = () => {
         <h2 className="elapsed-time">{timeToFinish}</h2>
       </div>
 
-      <Link href="/" legacyBehavior>
+      <Link href={`/resources/${resource.id}`} legacyBehavior>
         <a className="button">Go to resource</a>
       </Link>
     </div>
